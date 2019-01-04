@@ -5,14 +5,14 @@ function LinkedList() {
   this.head = null;
   this.tail = null;
 }
-//Declare a Node
+//Declare a Node Constructor
 function Node(value, next, prev) {
   this.value = value;
   this.next = next;
   this.prev = prev;
 }
 
-//Add 'addToHead' Method to the LinkedList
+//Add 'addToHead' Method to the LinkedList Prototype
 LinkedList.prototype.addToHead = function(value) {
   //New Node is created with the value passed in from parameter.
   //The 'next' property is passed in 'this.head' to point the new Node in the direction of the prexisting Node. If there are no Nodes in the LinkedList, 'this.head' will be null'
@@ -37,6 +37,21 @@ LinkedList.prototype.addToTail = function(value) {
   }
   this.tail = newNode;
 };
+
+//Create a 'removeHead' prototype Method
+LinkedList.prototype.removeHead = function(){
+  //if a node does not exist... return null
+  if(!this.head) return null;
+  //declare a variable 'val' set to the value of the current head ('this.head')
+  let val = this.head.value;
+  //'this.head' is now the value of 'this.head.next'
+  this.head = this.head.next;
+  //change the current 'prev' property on the head to null since there is nothing after it now.
+	if(this.head)this.head.prev = null;
+	else this.tail = null;
+	return val;
+}
+
 
 LinkedList.prototype.removeTail = function() {
   if (!this.tail) return null;
