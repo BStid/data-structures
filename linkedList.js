@@ -39,19 +39,18 @@ LinkedList.prototype.addToTail = function(value) {
 };
 
 //Create a 'removeHead' prototype Method
-LinkedList.prototype.removeHead = function(){
+LinkedList.prototype.removeHead = function() {
   //if a node does not exist... return null
-  if(!this.head) return null;
+  if (!this.head) return null;
   //declare a variable 'val' set to the value of the current head ('this.head')
   let val = this.head.value;
   //'this.head' is now the value of 'this.head.next'
   this.head = this.head.next;
-  //change the current 'prev' property on the head to null since there is nothing after it now.
-	if(this.head)this.head.prev = null;
-	else this.tail = null;
-	return val;
-}
-
+  //change the current 'prev' property on the head to null since there is nothing before it now.
+  if (this.head) this.head.prev = null;
+  else this.tail = null;
+  return val;
+};
 
 LinkedList.prototype.removeTail = function() {
   if (!this.tail) return null;
@@ -63,7 +62,9 @@ LinkedList.prototype.removeTail = function() {
 };
 
 LinkedList.prototype.search = function(searchValue) {
+  //start watching nodes starting with the head
   let currentNode = this.head;
+  //while there is a currentNode, compare the searchValue with that of the currentNode.value
   while (currentNode) {
     if (currentNode.value === searchValue) return currentNode.value;
     currentNode = currentNode.next;
