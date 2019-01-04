@@ -47,19 +47,54 @@ LinkedList.prototype.removeTail = function() {
   return val;
 };
 
+LinkedList.prototype.search = function(searchValue) {
+  let currentNode = this.head;
+  while (currentNode) {
+    if (currentNode.value === searchValue) return currentNode.value;
+    currentNode = currentNode.next;
+  }
+  return null;
+};
+
+LinkedList.prototype.indexOf = function(value) {
+  let currentNode = this.head;
+  let index = 0;
+  let indices = [];
+
+  while (currentNode) {
+    if (currentNode.value === value) {
+      indices.push(index);
+    }
+    index++;
+    currentNode = currentNode.next;
+  }
+  return indices;
+};
+
 var LL = new LinkedList();
 
-LL.addToHead(1000);
-LL.addToHead(2000);
-LL.addToTail(3000);
+//Find IndexOf
+LL.addToHead(3);
+LL.addToHead(2);
+LL.addToHead(3);
+LL.addToTail(4);
+LL.addToTail(5);
+LL.addToTail(3);
+console.log(LL.indexOf(3));
 
-LL.removeHead();
-LL.removeTail();
-LL.addToHead(123);
-LL.addToHead(70);
-LL.addToHead("hello");
-LL.addToTail(19);
-LL.addToTail("world");
-LL.addToTail(20);
+//Search
+// LL.addToHead(1000);
+// LL.addToHead(2000);
+// LL.addToTail(3000);
 
-console.log(LL.search("hello"));
+// LL.removeHead();
+// LL.removeTail();
+
+// LL.addToHead(123);
+// LL.addToHead(70);
+// LL.addToHead("hello");
+// LL.addToTail(19);
+// LL.addToTail("world");
+// LL.addToTail(20);
+
+// console.log(LL.search("hello"));
