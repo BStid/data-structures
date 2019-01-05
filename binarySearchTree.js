@@ -54,6 +54,19 @@ BST.prototype.depthFirstTraversal = function(iteratorFunc, order) {
   if (order === "post-order") iteratorFunc(this.value);
 };
 
+//travel through all nodes from top to bottom, going across left to right;
+BST.prototype.breathFirstTraversal = function(iteratorFunc) {
+  //queue = "first in, first out"
+  let queue = [this];
+  while (queue.length) {
+    const treeNode = queue.shift();
+    iteratorFunc(treeNode);
+    //if the treeNode has a left or right, push that child into the queue array
+    if (treeNode.left) queue.push(treeNode.left);
+    if (treeNode.right) queue.push(treeNode.right);
+  }
+};
+
 const bst = new BST(50);
 
 bst.insert(30);
