@@ -1,5 +1,13 @@
 //Linked List
 
+/* 
+  - Linked Lists have a Constant Time ( O(1) ) run time for adding and removing nodes.
+  - Never have to iterate through the whole linked list to find the head or tail.
+  - The pointers always know where the head and tail are, that's why the time is Constant in finding the head and tail.
+
+  - Searching Linked Lists: Linear Time Cpmplexity O(n) 
+**/
+
 //Declare a LinkedList Constructor
 function LinkedList() {
   this.head = null;
@@ -12,13 +20,15 @@ function Node(value, next, prev) {
   this.prev = prev;
 }
 
-//Add 'addToHead' Method to the LinkedList Prototype
+/* 
+  1. Add 'addToHead' Method to the LinkedList Prototype
+  2. New Node is created with the value passed in from parameter.
+  3. The 'next' property is passed in 'this.head' to point the new Node in the direction of the prexisting Node. If there are no Nodes in the LinkedList, 'this.head' will be null'
+  4. "If a node exists..." the prexisting head's Node will point its prev property to the 'newNode'
+  5. Otherwise, if no Node exists in the LinkedList, 'this.tail' becomes the newNode.
+**/
 LinkedList.prototype.addToHead = function(value) {
-  //New Node is created with the value passed in from parameter.
-  //The 'next' property is passed in 'this.head' to point the new Node in the direction of the prexisting Node. If there are no Nodes in the LinkedList, 'this.head' will be null'
   let newNode = new Node(value, this.head, null);
-  //"If a node exists..." the prexisting head's Node will point its prev property to the 'newNode'
-  //Otherwise, if no Node exists in the LinkedList, 'this.tail' becomes the newNode.
   if (this.head) {
     this.head.prev = newNode;
   } else {
