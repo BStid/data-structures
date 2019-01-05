@@ -6,26 +6,56 @@ function BST(value) {
   this.left = null;
   this.right = null;
 }
+function log(value) {
+  console.log(value);
+}
 
 //Add an 'insert' prototype method to BST
 BST.prototype.insert = function(value) {
   if (value <= this.value) {
     //is there already a left node/child already there?
     if (!this.left) this.left = new BST(value);
-    //otherwise, insert a new value into the left side
+    //otherwise, run the 'insert' method on this prexisting node with this same value.
     else this.left.insert(value);
   } else {
     //if there is not a right node/child...
+    //create a new node and insert that value
     if (!this.right) this.right = new BST(value);
-    //otherwise, insert a new value into the right side
+    //otherwise, run the 'insert' method on this prexisting node with this same value.
     else this.right.insert(value);
   }
 };
+//Add a 'contains' prototype method to BST
+BST.prototype.contains = function(value) {
+  if (value === this.value) return true;
+  //move to the left of the binary tree
+  else if (value < this.value) {
+    if (!this.left) return false;
+    //run the method again on the left node
+    else return this.left.contains(value);
+  }
+  //move to the right of the binary tree
+  else if (value > this.value) {
+    if (!this.right) return false;
+    else return this.right.contains(value);
+  }
+};
 
-//Create new Binary Search Tree
+//travel through all nodes in the binary tree
+BST.prototype.depthFirstTraversal = function(iteratorFunc, order) {
+  //if the order is 'pre-order' run the function.
+  if (order === "pre-order") iteratorFunc(this.value);
+  //if a left node/child exists, run through the left side
+  if (this.left) this.left.depthFirstTraversal(iteratorFunc, order);
+  //if order is 'in-order', run the function.
+  if (order === "in-order") iteratorFunc(this.value);
+  //if a right node/child exists, run through the right side.
+  if (this.right) this.right.depthFirstTraversal(iteratorFunc, order);
+  if (order === "post-order") iteratorFunc(this.value);
+};
+
 const bst = new BST(50);
 
-//Add nodes/children
 bst.insert(30);
 bst.insert(70);
 bst.insert(100);
@@ -38,4 +68,4 @@ bst.insert(85);
 bst.insert(105);
 bst.insert(10);
 
-console.log(bst);
+bst.depthFirstTraversal(log, "in-order");
