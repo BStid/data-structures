@@ -4,6 +4,8 @@ function log(array) {
   console.log(array[1]);
 }
 
+//^^^ The run time stays constant no matter how many items/elements there are. ^^^
+
 log([1, 2, 3, 4]);
 log([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 
@@ -13,6 +15,9 @@ function logAll(array) {
     console.log(array[i]);
   }
 }
+
+//You will have to do an operation on every element in this array.
+//This can start to add up the more elements that are added.
 
 logAll([1, 2, 3, 4, 5]);
 logAll([1, 2, 3, 4, 5, 6]);
@@ -26,6 +31,8 @@ function addAndLog(array) {
     }
   }
 }
+//^^^ Stay away from functions that do this. ^^^
+//This is very time consuming the more elements that are added.
 
 addAndLog(["A", "B", "C"]); // 9 pairs logged out
 addAndLog(["A", "B", "C", "D"]); // 16 pairs logged out
@@ -51,3 +58,5 @@ function binarySearch(array, key) {
   }
   return -1;
 }
+
+// ^^^ This is the most performant algorithm to use. ^^^
