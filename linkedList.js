@@ -62,13 +62,16 @@ LinkedList.prototype.removeTail = function() {
 };
 
 LinkedList.prototype.search = function(searchValue) {
-  //start watching nodes starting with the head
+  //currentNode is this.head
   let currentNode = this.head;
   //while there is a currentNode, compare the searchValue with that of the currentNode.value
+  //return the currentNode.value if there is a match
   while (currentNode) {
     if (currentNode.value === searchValue) return currentNode.value;
+    //move forward in the Linked List
     currentNode = currentNode.next;
   }
+  //if no matches, return null
   return null;
 };
 
