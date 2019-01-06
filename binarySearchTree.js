@@ -9,7 +9,9 @@ function BST(value) {
 function log(value) {
   console.log(value);
 }
-
+function logValueWithNode(node) {
+  console.log(node.value);
+}
 //Add an 'insert' prototype method to BST
 BST.prototype.insert = function(value) {
   if (value <= this.value) {
