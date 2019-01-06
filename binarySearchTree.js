@@ -69,6 +69,15 @@ BST.prototype.breathFirstTraversal = function(iteratorFunc) {
   }
 };
 
+BST.prototype.getMinVal = function() {
+  if (this.left) return this.left.getMinVal();
+  else return this.value;
+};
+
+BST.prototype.getMaxVal = function() {
+  if (this.right) return this.right.getMaxVal();
+  else return this.value;
+};
 const bst = new BST(50);
 
 bst.insert(30);
