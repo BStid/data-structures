@@ -1,4 +1,5 @@
 //Binary Search Tree
+//O(log n)
 
 //Declare a BST Contructor Function
 function BST(value) {
