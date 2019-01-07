@@ -3,11 +3,12 @@
 
 /* 
 - Constant time insertion & lookup
-- Data doesn't store reference to other pieces of data in the data structre.
+- Data doesn't store references to other pieces of data in the data structre.
 
 Practical Uses:
+    - Can use HashTables to store just about any type of information.
     - Email provider storing addresses
-    -Users of an application
+    - Users of an application
 */
 
 function HashTable(size) {
