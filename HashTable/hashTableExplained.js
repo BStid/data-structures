@@ -2,7 +2,7 @@
 //0(1)
 
 /* 
-- Constant time insertion & lookup
+- Constant time for insertion & lookup
 - Data doesn't store references to other pieces of data in the data structre.
 
 Practical Uses:
@@ -16,7 +16,7 @@ function HashTable(size) {
   //"Make a new array of whatever size and assign it to this.buckets"
   this.buckets = Array(size);
   //number of buckets in the array;
-  this.numBuckets = this.buckets.length;
+  this.numOfBuckets = this.buckets.length;
 }
 
 function HashNode(key, value, next) {
@@ -32,9 +32,9 @@ HashTable.prototype.hash = function(key) {
   for (let i = 0; i < key.length; i++) {
     total += key.charCodeAt(i);
   }
-  //the total is most likely greater thank the bucket size
+  //the total is most likely greater than the bucket size
   //you will need to take the remainder
-  const bucket = total % this.numBuckets;
+  const bucket = total % this.numOfBuckets;
   return bucket;
 };
 
@@ -43,6 +43,8 @@ HashTable.prototype.insert = function(key, value) {
   let index = this.hash(key);
   //if the index of the bucket is empty, create a new hashNode
   if (!this.buckets[index]) this.buckets[index] = new HashNode(key, value);
+  //else if, the buckets' index does exists and has the same key as the key we pass in...
+  //change the value to the new value that is passed in
   else if (this.buckets[index].key === key) {
     this.buckets[index].value = value;
   }
@@ -83,7 +85,7 @@ HashTable.prototype.retrieveAll = function() {
   //define empty array to store all nodes
   let allNodes = [];
   //loop through the entire bucket
-  for (let i = 0; i < this.numBuckets; i++) {
+  for (let i = 0; i < this.numOfBuckets; i++) {
     let currentNode = this.buckets[i];
     while (currentNode) {
       allNodes.push(currentNode);
