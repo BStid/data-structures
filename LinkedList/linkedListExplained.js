@@ -1,4 +1,5 @@
-//Linked List
+//Linked List - Explained
+//Doubly Linked List
 
 /* 
   - Linked Lists have a Constant Time ( O(1) ) run time for adding and removing nodes.
