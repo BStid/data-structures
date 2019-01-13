@@ -1,1 +1,1 @@
-# data-structures-algorithms-practice
+# Data Structures
