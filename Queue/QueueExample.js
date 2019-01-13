@@ -1,3 +1,4 @@
+//Generate different binary numbers from 1 to n
 class Queue {
   constructor() {
     this.items = [];
