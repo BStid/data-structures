@@ -56,3 +56,4 @@ findHighestAverage([
 ]);
 
 // findHighestAverage([["Jerry", 65], ["Bob", 91], ["Jerry", 23], ["Eric", 83]]);
+// findHighestAverage([["Tom", 65], ["Steve", 91], ["Adam", 23], ["Eric", 83]]);
