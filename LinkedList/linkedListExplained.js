@@ -30,22 +30,14 @@ function Node(value, next, prev) {
 **/
 LinkedList.prototype.addToHead = function(value) {
   let newNode = new Node(value, this.head, null);
-  if (this.head) {
-    this.head.prev = newNode;
-  } else {
-    this.tail = newNode;
-  }
+  this.head ? (this.head.prev = newNode) : (this.tail = newNode);
   //Whether there are Nodes existing in the LinkedList or not, 'this.head' will become the newNode.
   this.head = newNode;
 };
 
 LinkedList.prototype.addToTail = function(value) {
   let newNode = new Node(value, null, this.tail);
-  if (this.tail) {
-    this.tail.next = newNode;
-  } else {
-    this.head = newNode;
-  }
+  this.tail ? (this.tail.next = newNode) : (this.head = newNode);
   this.tail = newNode;
 };
 
